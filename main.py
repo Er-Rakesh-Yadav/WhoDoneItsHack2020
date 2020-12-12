@@ -7,6 +7,14 @@ from PIL.ImageTk import PhotoImage
 from docx2pdf import convert
 
 
+def openfile():
+    file = askopenfile(filetypes=[('Word Files', '*.docx')])
+    # convert(file)
+    convert(file.name, "output.pdf")
+    # convert(file.name)
+    messagebox.showinfo("Done", "File Successfully Converted")
+
+
 class LoginDashboard:
 
     def __init__(self, win_root):
@@ -37,15 +45,8 @@ class LoginDashboard:
 
         # ................. button-labelling ....................#
         button = Button(Login_frame, text=' Choose File: ', font=("arial", 15, "bold"), width=10, bg="blue", fg="red",
-                        command=self.openfile)
+                        command=openfile)
         button.grid(row=1, column=3, padx=15, pady=2)
-
-    def openfile(self):
-        file = askopenfile(filetypes=[('Word Files', '*.docx')])
-        # convert(file)
-        convert(file.name, "output.pdf")
-        # convert(file.name)
-        messagebox.showinfo("Done", "File Successfully Converted")
 
 
 root = Tk()
