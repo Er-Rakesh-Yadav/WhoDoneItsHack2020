@@ -7,12 +7,14 @@ from PIL.ImageTk import PhotoImage
 from docx2pdf import convert
 
 
+def openfile():
+    file = askopenfile(filetypes=[('Word Files', '*.docx')])
+    print(file)
+    convert(file.name)
+    showinfo("Done", "File Successfully Converted")
+
+
 class LoginDashboard:
-    def openfile(self):
-        file = askopenfile(filetypes=[('Word Files', '*.docx')])
-        print(file)
-        convert(file.name)
-        showinfo("Done", "File Successfully Converted")
 
     def __init__(self, win_root):
         self.root = win_root
@@ -41,10 +43,6 @@ class LoginDashboard:
         user_label.grid(row=1, column=0, padx=2, pady=2)
 
         # ................. button-labelling ....................#
-        # login_btn = Button(Login_frame, text="Login", width=7, font=("arial", 14, "italic", "bold"), bg="#cc2",
-        #                    bd=2, activebackground='goldenrod4', fg='black')
-        # login_btn.grid(row=3, column=3, padx=5, pady=5)
-
         button = Button(Login_frame, text=' Choose File: ', font=("arial", 15, "bold"), width=10, bg="blue", fg="red")
         button.grid(row=1, column=3, padx=15, pady=2)
 
