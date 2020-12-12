@@ -14,7 +14,7 @@ def openfile():
         convert(file.name)
         messagebox.showinfo("Done", "File Successfully Converted")
     except:
-        messagebox.showinfo("Error", "OOPSS!!!! File Successfully-NOT Converted!!")
+        messagebox.showinfo("Error", "OOPS!!!! File NOT Converted!!")
 
 
 class LoginDashboard:
