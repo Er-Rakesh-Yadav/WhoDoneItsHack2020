@@ -1,17 +1,10 @@
 from tkinter import *
+from tkinter import messagebox
 from tkinter.filedialog import askopenfile
-from tkinter.messagebox import showinfo
 
 from PIL import ImageTk
 from PIL.ImageTk import PhotoImage
 from docx2pdf import convert
-
-
-def openfile():
-    file = askopenfile(filetypes=[('Word Files', '*.docx')])
-    print(file)
-    convert(file.name)
-    showinfo("Done", "File Successfully Converted")
 
 
 class LoginDashboard:
@@ -43,8 +36,16 @@ class LoginDashboard:
         user_label.grid(row=1, column=0, padx=2, pady=2)
 
         # ................. button-labelling ....................#
-        button = Button(Login_frame, text=' Choose File: ', font=("arial", 15, "bold"), width=10, bg="blue", fg="red")
+        button = Button(Login_frame, text=' Choose File: ', font=("arial", 15, "bold"), width=10, bg="blue", fg="red",
+                        command=self.openfile)
         button.grid(row=1, column=3, padx=15, pady=2)
+
+    def openfile(self):
+        file = askopenfile(filetypes=[('Word Files', '*.docx')])
+        # convert(file)
+        convert(file.name, "output.pdf")
+        # convert(file.name)
+        messagebox.showinfo("Done", "File Successfully Converted")
 
 
 root = Tk()
