@@ -9,10 +9,12 @@ from docx2pdf import convert
 
 def openfile():
     file = askopenfile(filetypes=[('Word Files', '*.docx')])
-    # convert(file)
-    convert(file.name, "output.pdf")
-    # convert(file.name)
-    messagebox.showinfo("Done", "File Successfully Converted")
+
+    try:
+        convert(file.name)
+        messagebox.showinfo("Done", "File Successfully Converted")
+    except:
+        messagebox.showinfo("Error", "OOPS!!!! File NOT Converted!!")
 
 
 class LoginDashboard:
