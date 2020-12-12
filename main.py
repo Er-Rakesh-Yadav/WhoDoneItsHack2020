@@ -9,7 +9,7 @@ from docx2pdf import convert
 
 def openfile():
     file = askopenfile(filetypes=[('Word Files', '*.docx')])
-    # convert(file)
+
     try:
         convert(file.name)
         messagebox.showinfo("Done", "File Successfully Converted")
